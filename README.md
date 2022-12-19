@@ -5,3 +5,6 @@ Nguyen Van Thanh  </br>
 Nguyen Trung Hieu </br>
 Huu Tuong Tu
 </br>
+#[Tuần 1]: </br>Use case diagram, SRS, Interaction Diagram            
+#[Tuần 2]: Analysis Diagram, Interface Design, Class Design </br>
+#[Tuần 3]: Data modeling</br>
