@@ -6,7 +6,9 @@ Nguyen Trung Hieu </br>
 Huu Tuong Tu
 </br>
 # [Tuần 1]: </br> 
-Use case diagram, SRS, Interaction Diagram            
+Use case diagram : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/blob/main/UseCaseDiagram.png </br> 
+SRS : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/blob/main/SRS_Capstone_Group_11.pdf </br> 
+Interaction Diagram : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/Interaction%20Diagram </br>            
 # [Tuần 2]:</br> 
 Analysis Diagram, Interface Design, Class Design </br>
 # [Tuần 3]:</br> 
