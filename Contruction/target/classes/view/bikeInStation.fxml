@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.bike.xemBaiXeController">
+    <center>
+        <ScrollPane prefHeight="492.0" prefWidth="939.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="653.0" prefWidth="1170.0">
+                    <children>
+                        <TableView fx:id="bikeTable" layoutX="75.0" layoutY="14.0" prefHeight="484.0" prefWidth="1020.0">
+                            <columns>
+                                <TableColumn fx:id="idBikeC" prefWidth="92.0" text="ID xe" />
+                                <TableColumn fx:id="bienSoXeC" prefWidth="191.0" text="Biển số xe" />
+                                <TableColumn fx:id="loaiXeC" prefWidth="165.0" text="Loại xe" />
+                                <TableColumn fx:id="giaCocC" prefWidth="189.5999755859375" text="Giá cọc" />
+                                <TableColumn fx:id="pinC" prefWidth="192.79998779296875" text="Lượng pin " />
+                                <TableColumn fx:id="statusC" prefWidth="185.066650390625" text="Trạng thái" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+    <top>
+        <Pane prefHeight="235.0" prefWidth="1165.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="506.0" layoutY="86.0" prefHeight="53.0" prefWidth="294.0" text="Thông tin bãi xe" textFill="#e57950">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="130.0" fitWidth="208.0" layoutX="31.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+                <Text layoutX="488.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên bãi xe: Đại học Bách khoa Hà Nội " wrappingWidth="323.89849853515625">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+    </top>
+</BorderPane>

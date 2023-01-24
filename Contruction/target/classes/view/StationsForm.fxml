@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.station.stationController">
+    <center>
+        <ScrollPane prefHeight="492.0" prefWidth="939.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="653.0" prefWidth="1170.0">
+               <children>
+                        <TableView fx:id="stationTable" layoutX="96.0" layoutY="38.0" prefHeight="432.0" prefWidth="1003.0">
+                            <columns>
+                                <TableColumn fx:id="idC" prefWidth="157.0" text="Số thứ tự" />
+                                <TableColumn fx:id="tenBaiXeC" prefWidth="168.0" text="Tên bãi xe" />
+                                <TableColumn fx:id="viTriBaiXeC" prefWidth="190.0" text="Vị trí bãi xe" />
+                                <TableColumn fx:id="dienTichBaiXeC" prefWidth="256.0" text="Diện tích bãi xe" />
+                                <TableColumn fx:id="soLuongXeTrongBaiC" prefWidth="247.0" text="Số lượng xe trong bãi" />
+                            </columns>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#detailStation" text="Xem danh sách xe" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                        </TableView>
+               </children></AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+    <top>
+        <Pane prefHeight="235.0" prefWidth="1165.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField layoutX="323.0" layoutY="168.0" prefHeight="37.0" prefWidth="449.0" />
+                <Label layoutX="166.0" layoutY="178.0" text="Tra cứu bãi xe">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="487.0" layoutY="65.0" prefHeight="53.0" prefWidth="294.0" text="Quản lý bãi xe" textFill="#e57950">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <MenuButton layoutX="810.0" layoutY="168.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="123.0" text="Search">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                </MenuButton>
+                <Button layoutX="972.0" layoutY="167.0" mnemonicParsing="false" onAction="#viewRentingBikeAction" prefHeight="39.0" prefWidth="164.0" text="Xem xe đang thuê" />
+                <ImageView fitHeight="130.0" fitWidth="208.0" layoutX="31.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </top>
+</BorderPane>
