@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="969.0" prefWidth="1266.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane prefHeight="865.0" prefWidth="1382.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                    <children>
+                        <Button fx:id="btnConfirmPayment" alignment="CENTER" contentDisplay="CENTER" layoutX="457.0" layoutY="722.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Xác nhận" textFill="WHITE">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Button>
+                        <TextField fx:id="holderName1" layoutX="383.0" layoutY="210.0" prefHeight="44.0" prefWidth="510.0">
+
+                        </TextField>
+                        <Label layoutX="173.0" layoutY="207.0" prefHeight="50.0" prefWidth="231.0" text="Mã thẻ :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <TextField fx:id="cardNumber1" layoutX="381.0" layoutY="41.0" prefHeight="44.0" prefWidth="548.0">
+
+                        </TextField>
+                        <Label layoutX="173.0" layoutY="37.0" prefHeight="50.0" prefWidth="182.0" text="Tên chủ thẻ :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="173.0" layoutY="291.0" prefHeight="50.0" prefWidth="182.0" text="Ngân hàng :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <TextField fx:id="cardNumber" layoutX="381.0" layoutY="294.0" prefHeight="44.0" prefWidth="548.0">
+
+                        </TextField>
+                        <Label layoutX="173.0" layoutY="120.0" prefHeight="50.0" prefWidth="182.0" text="Ngày hết hạn :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="173.0" layoutY="390.0" prefHeight="50.0" prefWidth="170.0" text="Mã bảo mật :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <TextField fx:id="holderName11" layoutX="383.0" layoutY="393.0" prefHeight="44.0" prefWidth="558.0">
+
+                        </TextField>
+                        <DatePicker layoutX="381.0" layoutY="127.0" prefHeight="44.0" prefWidth="392.0" />
+                        <Label layoutX="967.0" layoutY="52.0" text="(*)" textFill="#fc0000">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="959.0" layoutY="222.0" text="(*)" textFill="#fc0000">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="959.0" layoutY="306.0" text="(*)" textFill="#fc0000">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="959.0" layoutY="405.0" text="(*)" textFill="#fc0000">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <TextArea layoutX="383.0" layoutY="486.0" prefHeight="205.0" prefWidth="558.0" />
+                        <Label layoutX="173.0" layoutY="475.0" prefHeight="50.0" prefWidth="201.0" text="Nội dung giao dịch :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="808.0" layoutY="136.0" text="(*)" textFill="#fc0000">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+    <top>
+        <Pane prefHeight="153.0" prefWidth="873.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="pageTitle" layoutX="483.0" layoutY="43.0" prefHeight="67.0" prefWidth="470.0" text="Thông tin thanh toán " textAlignment="CENTER" textFill="#e57950">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="23.0" layoutY="10.0">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+    </top>
+</BorderPane>
