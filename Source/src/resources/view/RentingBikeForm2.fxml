@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.bike.viewRentingBikeController">
+    <top>
+        <Pane prefHeight="148.0" prefWidth="1122.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="pageTitle" layoutX="363.0" layoutY="31.0" prefHeight="96.0" prefWidth="525.0" text="Thông tin xe đang thuê" textAlignment="CENTER" textFill="#e57950">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="46.0" layoutY="12.0">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+    </top>
+    <center>
+        <ScrollPane prefHeight="519.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane prefHeight="535.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                    <children>
+                        <Button fx:id="btnConfirmPayment" alignment="CENTER" contentDisplay="CENTER" layoutX="674.0" layoutY="269.0" mnemonicParsing="false" onAction="#pauseRentingBikeAction" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Khóa xe" textFill="WHITE">
+
+                        </Button>
+                        <Label layoutX="70.0" layoutY="76.0" prefHeight="50.0" prefWidth="138.0" text="Giá cọc :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="26.0" prefHeight="50.0" prefWidth="182.0" text="Loại xe :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="138.0" prefHeight="50.0" prefWidth="182.0" text="Biển số xe :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="196.0" prefHeight="50.0" prefWidth="231.0" text="Bãi đã thuê :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Button fx:id="btnConfirmPayment1" alignment="CENTER" contentDisplay="CENTER" layoutX="674.0" layoutY="330.0" mnemonicParsing="false" onAction="#openRentingBikeAction" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Mở khóa" textFill="WHITE">
+
+                        </Button>
+                        <Label layoutX="70.0" layoutY="253.0" prefHeight="50.0" prefWidth="267.0" text="Thời điểm bắt đầu thuê :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="loaixe" layoutX="344.0" layoutY="33.0" prefHeight="37.0" prefWidth="267.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="giacoc" layoutX="342.0" layoutY="78.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="biensoxe" layoutX="342.0" layoutY="140.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="baidathue" layoutX="344.0" layoutY="198.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="thoidiembatdauthue" layoutX="342.0" layoutY="255.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="303.0" prefHeight="50.0" prefWidth="267.0" text="Ngày thuê :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="ngaythue" layoutX="342.0" layoutY="305.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="361.0" prefHeight="50.0" prefWidth="267.0" text="Trạng thái : ">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="trangthai" layoutX="344.0" layoutY="359.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="btnConfirmPayment11" alignment="CENTER" contentDisplay="CENTER" layoutX="674.0" layoutY="388.0" mnemonicParsing="false" onAction="#returnBikeAction" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Trả xe" textFill="WHITE" />
+                        <ImageView fx:id="anhxe" fitHeight="210.0" fitWidth="329.0" layoutX="667.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="btnhoadon" alignment="CENTER" contentDisplay="CENTER" layoutX="674.0" layoutY="447.0" mnemonicParsing="false" onAction="#showInvoiceAction" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Hóa đơn" textFill="WHITE" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

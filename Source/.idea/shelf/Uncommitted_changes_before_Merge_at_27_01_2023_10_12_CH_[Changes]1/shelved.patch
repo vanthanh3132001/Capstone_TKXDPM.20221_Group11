@@ -1,0 +1,121 @@
+Index: src/java/controller/bike/viewRentingBikeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller.bike;\r\nimport javax.swing.*;\r\n\r\nimport controller.interbank.interbankController;\r\nimport controller.bike.xemBaiXeController;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Alert;\r\nimport javafx.scene.control.TableColumn;\r\nimport javafx.scene.control.TableView;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\nimport entity.station;\r\nimport lombok.SneakyThrows;\r\nimport utility.DbUtil;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.util.ResourceBundle;\r\nimport java.sql.SQLException;\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.util.Optional;\r\nimport java.util.ResourceBundle;\r\nimport java.util.logging.Level;\r\nimport java.util.logging.Logger;\r\nimport entity.bike;\r\nimport static utility.SQLCommand.STATION_QUERY_LAY_THONG_TIN;\r\nimport javafx.scene.control.Label;\r\n\r\npublic class viewRentingBikeController{\r\n\r\n\r\n\r\n    ObservableList<station> stationList = FXCollections.observableArrayList();\r\n\r\n    Connection connection = null ;\r\n    PreparedStatement preparedStatement = null ;\r\n    ResultSet resultSet = null ;\r\n\r\n\r\n\r\n    public void pauseRentingBikeAction(ActionEvent eventPause) throws IOException {\r\n\r\n        try {\r\n\r\n\r\n            connection = DbUtil.getInstance().getConnection();\r\n            preparedStatement = connection.prepareStatement(\"SELECT * from transaction\");\r\n            resultSet = preparedStatement.executeQuery();\r\n            int rsCount = 0;\r\n            while(resultSet.next())\r\n            {\r\n                if (resultSet.isLast()) {\r\n                    int last_transaction = (resultSet.getInt(\"ID_Transaction\"));\r\n                    int id_bike = (resultSet.getInt(\"ID_Bike\"));\r\n\r\n                    PreparedStatement pS = connection.prepareStatement(\"SELECT * from bike where ID_Bike = ?\");\r\n                    pS.setInt(1, id_bike);\r\n                    resultSet = pS.executeQuery();\r\n                    resultSet.next();\r\n                    boolean LockorNot = resultSet.getBoolean(\"isLocked\");\r\n                    if (LockorNot) {\r\n\r\n                        JFrame mainFrame = new JFrame();\r\n                        JOptionPane.showMessageDialog(mainFrame, \"Xe đang khóa\");\r\n                    } else {\r\n                        pS = connection.prepareStatement(\"UPDATE transaction SET TimeRentingBike = ADDTIME(SUBTIME(current_time,LatestUnlockTime),TimeRentingBike) where ID_Transaction = ?\");\r\n                        pS.setInt(1, last_transaction);\r\n                        pS.execute();\r\n\r\n                        pS = connection.prepareStatement(\"UPDATE bike SET isLocked = 1 where ID_Bike = ?\");\r\n                        pS.setInt(1, id_bike);\r\n                        pS.execute();\r\n\r\n                        JFrame mainFrame = new JFrame();\r\n                        JOptionPane.showMessageDialog(mainFrame, \"Khóa xe thành công\");\r\n                    }\r\n                }\r\n            }\r\n\r\n\r\n\r\n\r\n\r\n\r\n        } catch (SQLException ex) {\r\n            Logger.getLogger(station.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n\r\n\r\n    }\r\n\r\n\r\n    public void openRentingBikeAction(ActionEvent eventOpen) throws IOException {\r\n\r\n\r\n\r\n//        UPDATE transaction\r\n//          SET LatestUnlockTime = current_time\r\n//          WHERE ID_Transaction = 1;\r\n        try {\r\n\r\n\r\n            connection = DbUtil.getInstance().getConnection();\r\n            preparedStatement = connection.prepareStatement(\"SELECT * from transaction\");\r\n            resultSet = preparedStatement.executeQuery();\r\n            int rsCount = 0;\r\n            while(resultSet.next())\r\n            {\r\n                if (resultSet.isLast()) {\r\n                    int last_transaction = (resultSet.getInt(\"ID_Transaction\"));\r\n                    int id_bike = (resultSet.getInt(\"ID_Bike\"));\r\n\r\n                    PreparedStatement pS = connection.prepareStatement(\"SELECT * from bike where ID_Bike = ?\");\r\n                    pS.setInt(1, id_bike);\r\n                    resultSet = pS.executeQuery();\r\n                    resultSet.next();\r\n                    boolean LockorNot = resultSet.getBoolean(\"isLocked\");\r\n                    if (!LockorNot) {\r\n                        JFrame mainFrame = new JFrame();\r\n                        JOptionPane.showMessageDialog(mainFrame, \"Xe đang ở trạng thái mở khóa\");\r\n                    } else {\r\n                        pS = connection.prepareStatement(\"UPDATE transaction\\n\" +\r\n                                \"          SET LatestUnlockTime = current_time\\n\" +\r\n                                \"          where ID_Transaction = ?\");\r\n                        pS.setInt(1, last_transaction);\r\n                        pS.execute();\r\n\r\n                        pS = connection.prepareStatement(\"UPDATE bike SET isLocked = 0 where ID_Bike = ?\");\r\n                        pS.setInt(1, id_bike);\r\n                        pS.execute();\r\n                        JFrame mainFrame = new JFrame();\r\n                        JOptionPane.showMessageDialog(mainFrame, \"Mở khóa xe thành công\");\r\n                    }\r\n                }\r\n            }\r\n\r\n\r\n        } catch (SQLException ex) {\r\n            Logger.getLogger(station.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    public void returnBikeAction(ActionEvent eventOpen) throws IOException {\r\n\r\n\r\n\r\n//        interbankController interbank = new interbankController();\r\n//        interbank.resetMoney();\r\n        try {\r\n\r\n\r\n            connection = DbUtil.getInstance().getConnection();\r\n            preparedStatement = connection.prepareStatement(\"SELECT * from transaction\");\r\n            resultSet = preparedStatement.executeQuery();\r\n            int rsCount = 0;\r\n            while(resultSet.next())\r\n            {\r\n                if (resultSet.isLast()) {\r\n                    int last_transaction = (resultSet.getInt(\"ID_Transaction\"));\r\n                    int id_bike = (resultSet.getInt(\"ID_Bike\"));\r\n\r\n                    PreparedStatement pS = connection.prepareStatement(\"SELECT * from bike where ID_Bike = ?\");\r\n                    pS.setInt(1, id_bike);\r\n                    resultSet = pS.executeQuery();\r\n                    resultSet.next();\r\n                    boolean LockorNot = resultSet.getBoolean(\"isLocked\");\r\n                    if (!LockorNot) {\r\n                        JFrame mainFrame = new JFrame();\r\n                        JOptionPane.showMessageDialog(mainFrame, \"Xe đang ở trạng thái mở khóa\");\r\n                    } else {\r\n                        pS = connection.prepareStatement(\"UPDATE transaction\\n\" +\r\n                                \"          SET LatestUnlockTime = current_time\\n\" +\r\n                                \"          where ID_Transaction = ?\");\r\n                        pS.setInt(1, last_transaction);\r\n                        pS.execute();\r\n\r\n                        pS = connection.prepareStatement(\"UPDATE bike SET isLocked = 0 where ID_Bike = ?\");\r\n                        pS.setInt(1, id_bike);\r\n                        pS.execute();\r\n                        JFrame mainFrame = new JFrame();\r\n                        JOptionPane.showMessageDialog(mainFrame, \"Mở khóa xe thành công\");\r\n                    }\r\n                }\r\n            }\r\n\r\n\r\n        } catch (SQLException ex) {\r\n            Logger.getLogger(station.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/java/controller/bike/viewRentingBikeController.java b/src/java/controller/bike/viewRentingBikeController.java
+--- a/src/java/controller/bike/viewRentingBikeController.java	
++++ b/src/java/controller/bike/viewRentingBikeController.java	
+@@ -70,8 +70,8 @@
+                     pS.setInt(1, id_bike);
+                     resultSet = pS.executeQuery();
+                     resultSet.next();
+-                    boolean LockorNot = resultSet.getBoolean("isLocked");
+-                    if (LockorNot) {
++                    String LockorNot = resultSet.getString("isLocked");
++                    if (LockorNot.equals("1")) {
+ 
+                         JFrame mainFrame = new JFrame();
+                         JOptionPane.showMessageDialog(mainFrame, "Xe đang khóa");
+@@ -107,9 +107,7 @@
+ 
+ 
+ 
+-//        UPDATE transaction
+-//          SET LatestUnlockTime = current_time
+-//          WHERE ID_Transaction = 1;
++
+         try {
+ 
+ 
+@@ -127,8 +125,8 @@
+                     pS.setInt(1, id_bike);
+                     resultSet = pS.executeQuery();
+                     resultSet.next();
+-                    boolean LockorNot = resultSet.getBoolean("isLocked");
+-                    if (!LockorNot) {
++                    String LockorNot = resultSet.getString("isLocked");
++                    if (!LockorNot.equals("1")) {
+                         JFrame mainFrame = new JFrame();
+                         JOptionPane.showMessageDialog(mainFrame, "Xe đang ở trạng thái mở khóa");
+                     } else {
+@@ -152,7 +150,6 @@
+             Logger.getLogger(station.class.getName()).log(Level.SEVERE, null, ex);
+         }
+ 
+-
+     }
+ 
+ 
+Index: src/java/controller/station/stationController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller.station;\r\nimport javafx.scene.control.Label;\r\nimport controller.bike.xemBaiXeController;\r\nimport controller.bike.viewRentingBikeController;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Alert;\r\nimport javafx.scene.control.TableColumn;\r\nimport javafx.scene.control.TableView;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\nimport entity.station;\r\nimport lombok.SneakyThrows;\r\nimport utility.DbUtil;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.util.ResourceBundle;\r\nimport java.sql.SQLException;\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.util.Optional;\r\nimport java.util.ResourceBundle;\r\nimport java.util.logging.Level;\r\nimport java.util.logging.Logger;\r\nimport entity.bike;\r\nimport static utility.SQLCommand.STATION_QUERY_LAY_THONG_TIN;\r\n\r\nimport utility.Utility;\r\nimport view.Main;\r\npublic class stationController implements Initializable {\r\n    @FXML\r\n    private TableView<station> stationTable;\r\n    @FXML\r\n    private TableColumn<station,Integer> idC;\r\n    @FXML\r\n    private TableColumn<station,String>  tenBaiXeC;\r\n\r\n    @FXML\r\n    private TableColumn<station,String>  viTriBaiXeC;\r\n\r\n    @FXML\r\n    private TableColumn<station,String>  dienTichBaiXeC;\r\n    @FXML\r\n    private TableColumn<station,String>  soLuongXeTrongBaiC;\r\n\r\n    private Label loaixe;\r\n\r\n\r\n    ObservableList<station> stationList = FXCollections.observableArrayList();\r\n\r\n    Connection connection = null ;\r\n    PreparedStatement preparedStatement = null ;\r\n    ResultSet resultSet = null ;\r\n\r\n    @SneakyThrows\r\n    @Override\r\n    public void initialize(URL location, ResourceBundle resources) {\r\n            loadData();\r\n\r\n\r\n\r\n\r\n    }\r\n    private void initialize() {\r\n        loaixe.setText(\"Bye\");\r\n    }\r\n\r\n    @FXML\r\n    private void refreshTable() {\r\n        try {\r\n\r\n\r\n\r\n            preparedStatement = connection.prepareStatement(STATION_QUERY_LAY_THONG_TIN);\r\n            resultSet = preparedStatement.executeQuery();\r\n\r\n            while (resultSet.next()){\r\n            String soLuongXe=\"1\";\r\n            int ids=1;\r\n            stationList.add(new station(\r\n                    resultSet.getInt(\"ID_Station\"),\r\n                    resultSet.getString(\"StationName\"),\r\n                    resultSet.getString(\"LocationName\"),\r\n                    resultSet.getString(\"StationArea\"),\r\n                    soLuongXe));\r\n\r\n            stationTable.setItems(stationList);\r\n\r\n\r\n           }\r\n\r\n\r\n        } catch (SQLException ex) {\r\n            Logger.getLogger(station.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n\r\n\r\n\r\n    }\r\n    @FXML\r\n    private void loadData() throws SQLException {\r\n        connection = DbUtil.getInstance().getConnection();\r\n        refreshTable();\r\n        idC.setCellValueFactory(new PropertyValueFactory<station,Integer>(\"id\"));\r\n        tenBaiXeC.setCellValueFactory(new PropertyValueFactory<station,String>(\"tenBaiXe\"));\r\n        viTriBaiXeC.setCellValueFactory(new PropertyValueFactory<station,String>(\"viTriBaiXe\"));\r\n        dienTichBaiXeC.setCellValueFactory(new PropertyValueFactory<station,String>(\"dienTichBaiXe\"));\r\n        soLuongXeTrongBaiC.setCellValueFactory(new PropertyValueFactory<station,String>(\"soLuongXeTrongBai\"));\r\n\r\n\r\n       stationTable.setItems(stationList);\r\n    }\r\n\r\n\r\n    public void viewRentingBikeAction(ActionEvent event) throws  IOException {\r\n        FXMLLoader loader = new FXMLLoader();\r\n        loader.setLocation(getClass().getResource(\"/view/RentingBikeForm2.fxml\"));\r\n//        loader.\r\n//        Label lblData = (Label) loader.lookup(\"#lblTest\");\r\n//        if (lblData!=null) lblData.setText(\"bye\");\r\n        viewRentingBikeController controller = new viewRentingBikeController();\r\n        loader.setController(controller);\r\n        System.out.println((loader));\r\n        Parent RentingBike = loader.load();\r\n\r\n\r\n\r\n        Scene scene = new Scene(RentingBike);\r\n\r\n        // DEAD\r\n        loaixe = (Label) scene.lookup(\"#loaixe\");\r\n        System.out.println(loaixe);\r\n        if (loaixe!=null) loaixe.setText(\"Bye\");\r\n\r\n        Stage stage = new Stage();\r\n        stage.initStyle(StageStyle.DECORATED);\r\n        stage.setResizable(false);\r\n        stage.setTitle(\"RentingBike \");\r\n        stage.setScene(scene);\r\n        stage.show();\r\n        Label label = (Label) scene.lookup(\"#loaixe\");\r\n        label.setText(\"ABC\");\r\n    }\r\n    @SneakyThrows\r\n    public void detailStation(ActionEvent e) throws IOException {\r\n\r\n        FXMLLoader loader2 = new FXMLLoader();\r\n        loader2.setLocation(getClass().getResource(\"/view/bikeInStation.fxml\"));\r\n        Parent thongtinBai = loader2.load();\r\n        xemBaiXeController controller = loader2.getController();\r\n        station selected = stationTable.getSelectionModel().getSelectedItem();\r\n        if (selected == null) {\r\n            Alert m = new Alert(Alert.AlertType.INFORMATION);\r\n            m.setTitle(\"Thông báo!\");\r\n            m.setHeaderText(\"Không bai xe nào được chọn.\");\r\n            m.setContentText(\"Vui lòng chọn lại.\");\r\n            m.show();\r\n            return;\r\n        }\r\n        controller.setListB(selected);\r\n        System.out.println(selected.getId());\r\n        Stage stage2 = new Stage();\r\n        stage2.initStyle(StageStyle.DECORATED);\r\n        stage2.setTitle(\"Thông tin bai\");\r\n        Scene scene2 = new Scene(thongtinBai);\r\n        stage2.setScene(scene2);\r\n        stage2.show();\r\n\r\n\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/java/controller/station/stationController.java b/src/java/controller/station/stationController.java
+--- a/src/java/controller/station/stationController.java	
++++ b/src/java/controller/station/stationController.java	
+@@ -37,8 +37,6 @@
+ import entity.bike;
+ import static utility.SQLCommand.STATION_QUERY_LAY_THONG_TIN;
+ 
+-import utility.Utility;
+-import view.Main;
+ public class stationController implements Initializable {
+     @FXML
+     private TableView<station> stationTable;
+@@ -123,7 +121,7 @@
+        stationTable.setItems(stationList);
+     }
+ 
+-
++    @FXML
+     public void viewRentingBikeAction(ActionEvent event) throws  IOException {
+         FXMLLoader loader = new FXMLLoader();
+         loader.setLocation(getClass().getResource("/view/RentingBikeForm2.fxml"));
+@@ -153,13 +151,13 @@
+         Label label = (Label) scene.lookup("#loaixe");
+         label.setText("ABC");
+     }
+-    @SneakyThrows
++    @FXML
+     public void detailStation(ActionEvent e) throws IOException {
+ 
+-        FXMLLoader loader2 = new FXMLLoader();
+-        loader2.setLocation(getClass().getResource("/view/bikeInStation.fxml"));
+-        Parent thongtinBai = loader2.load();
+-        xemBaiXeController controller = loader2.getController();
++        FXMLLoader loader = new FXMLLoader();
++        loader.setLocation(getClass().getResource("/view/bikeInStation.fxml"));
++        Parent thongtinBai = loader.load();
++        xemBaiXeController controller = loader.getController();
+         station selected = stationTable.getSelectionModel().getSelectedItem();
+         if (selected == null) {
+             Alert m = new Alert(Alert.AlertType.INFORMATION);
+@@ -170,16 +168,12 @@
+             return;
+         }
+         controller.setListB(selected);
+-        System.out.println(selected.getId());
+-        Stage stage2 = new Stage();
+-        stage2.initStyle(StageStyle.DECORATED);
+-        stage2.setTitle("Thông tin bai");
+-        Scene scene2 = new Scene(thongtinBai);
+-        stage2.setScene(scene2);
+-        stage2.show();
+-
+-
+-
++        Stage stage = new Stage();
++//        stage.initStyle(StageStyle.DECORATED);
++        stage.setTitle("Thông tin bai");
++        Scene scene = new Scene(thongtinBai);
++        stage.setScene(scene);
++        stage.show();
+     }
+ 
+ }

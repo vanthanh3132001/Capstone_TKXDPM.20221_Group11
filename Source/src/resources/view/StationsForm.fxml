@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.station.stationController">
+    <center>
+        <ScrollPane prefHeight="492.0" prefWidth="939.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="653.0" prefWidth="1170.0">
+                    <children>
+                        <TableView fx:id="stationTable" layoutX="96.0" layoutY="38.0" prefHeight="432.0" prefWidth="1003.0">
+                            <columns>
+                                <TableColumn fx:id="idC" prefWidth="99.0" text="Số thứ tự" />
+                                <TableColumn fx:id="tenBaiXeC" prefWidth="262.0" text="Tên bãi xe" />
+                                <TableColumn fx:id="viTriBaiXeC" prefWidth="294.0" text="Vị trí bãi xe" />
+                                <TableColumn fx:id="dienTichBaiXeC" prefWidth="164.0" text="Diện tích bãi xe" />
+                                <TableColumn fx:id="soLuongXeTrongBaiC" prefWidth="199.0" text="Số lượng xe trong bãi" />
+                            </columns>
+                            <contextMenu>
+                                <ContextMenu>
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#detailStation" text="Xem danh sách xe" />
+                                    </items>
+                                </ContextMenu>
+                            </contextMenu>
+                        </TableView>
+                  <Text fill="#e57950" layoutX="96.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Sử dụng chuột phải để chọn các chức năng">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                    </children></AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+    <top>
+        <Pane prefHeight="235.0" prefWidth="1165.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="495.0" layoutY="77.0" prefHeight="53.0" prefWidth="294.0" text="Quản lý bãi xe" textFill="#e57950">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="130.0" fitWidth="208.0" layoutX="31.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="946.0" layoutY="79.0" mnemonicParsing="false" onAction="#viewRentingBikeAction" prefHeight="49.0" prefWidth="178.0" text="Xem xe đang thuê" textFill="#e57950">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            </children>
+        </Pane>
+    </top>
+</BorderPane>

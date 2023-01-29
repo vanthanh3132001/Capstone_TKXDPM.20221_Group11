@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="578.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.bike.chooseStationController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <Label layoutX="227.0" layoutY="24.0" text="Chọn bãi xe trả" textFill="#ff6600">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="72.0" fitWidth="91.0" layoutX="34.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <TableView fx:id="table" layoutX="46.0" layoutY="89.0" prefHeight="466.0" prefWidth="523.0">
+            <columns>
+                <TableColumn fx:id="sothutu" prefWidth="164.0" text="Số thứ tự" />
+
+                <TableColumn fx:id="tenbaixe" prefWidth="168.0" text="Tên bãi xe" />
+                <TableColumn fx:id="vitribaixe" prefWidth="190.0" text="Vị trí bãi xe" />
+            </columns>
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#chooseStation" text="Trả xe " />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+
+        </TableView>
+    </children>
+</AnchorPane>

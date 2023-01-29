@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.bike.viewDetailBikeController">
+    <top>
+        <Pane prefHeight="148.0" prefWidth="1122.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="pageTitle" layoutX="353.0" layoutY="49.0" prefHeight="96.0" prefWidth="525.0" text="Thông tin chi tiết xe" textAlignment="CENTER" textFill="#e57950">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="46.0" layoutY="12.0">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+    </top>
+   <bottom>
+        <ScrollPane prefHeight="519.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane prefHeight="535.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                    <children>
+                        <Label layoutX="70.0" layoutY="124.0" prefHeight="50.0" prefWidth="138.0" text="Giá cọc :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="67.0" prefHeight="50.0" prefWidth="182.0" text="Loại xe :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="186.0" prefHeight="50.0" prefWidth="182.0" text="Biển số xe :">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="loaiXeL" layoutX="246.0" layoutY="71.0" prefHeight="43.0" prefWidth="270.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="giaCocL" layoutX="252.0" layoutY="126.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label fx:id="bienSoXeL" layoutX="252.0" layoutY="188.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <Label layoutX="70.0" layoutY="276.0" prefHeight="50.0" prefWidth="267.0" text="Trạng thái : ">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="trangthaiL" layoutX="252.0" layoutY="278.0" prefHeight="46.0" prefWidth="295.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                  <Label layoutX="70.0" layoutY="355.0" prefHeight="50.0" prefWidth="267.0" text="Thời lượng pin còn lại :">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pinL" layoutX="312.0" layoutY="357.0" prefHeight="46.0" prefWidth="295.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imageView" fitHeight="295.0" fitWidth="331.0" layoutX="655.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="759.0" layoutY="346.0" prefHeight="50.0" prefWidth="182.0" text="Ảnh minh họa">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+   </bottom>
+</BorderPane>
