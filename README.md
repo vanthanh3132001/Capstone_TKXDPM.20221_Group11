@@ -5,13 +5,22 @@ Nguyen Van Thanh  </br>
 Nguyen Trung Hieu </br>
 Huu Tuong Tu
 </br>
-# [Tuần 1]: </br> 
+# [Tuần 1]: </br>
+## Task
 Use case diagram : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/blob/main/UseCaseDiagram.png </br> 
 SRS : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/blob/main/SRS_Capstone_Group_11.pdf </br> 
-Interaction Diagram : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/Interaction%20Diagram </br>            
+Interaction Diagram : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/Interaction%20Diagram </br>    
+
 # [Tuần 2]:</br> 
+## Task
 Analysis Diagram : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/AnalysisDiagram </br>
 Interface Design : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/InterFaceDesign </br>
 Class Design : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/ClassDesign </br>
 # [Tuần 3]:</br> 
-Data modeling</br>
+## Task
+Data modeling : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/DataModel
+</br>
+# [Tuần 4]:</br>
+## Task
+Coding
+## Contribution
