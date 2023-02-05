@@ -31,11 +31,16 @@
                         <Image url="@../image/logo.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="488.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên bãi xe: Đại học Bách khoa Hà Nội " wrappingWidth="323.89849853515625">
+                <Text layoutX="467.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên bãi xe: " wrappingWidth="156.89849853515625">
                     <font>
-                        <Font size="19.0" />
+                        <Font name="System Bold" size="22.0" />
                     </font>
                 </Text>
+            <Label fx:id="tenBaiXeL" layoutX="645.0" layoutY="153.0" prefHeight="32.0" prefWidth="444.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
     </top>
