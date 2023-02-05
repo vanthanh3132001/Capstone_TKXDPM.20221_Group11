@@ -9,11 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import entity.bike;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
@@ -51,11 +48,14 @@ public class xemBaiXeController implements Initializable{
     private TableColumn<bike,String>  c6;
     @FXML
             private TextField ids;
+    @FXML
+    private Label tenBaiXeL;
 
 
 
 
     int idStation;
+    String tenBaiXe;
     Connection connection = null;
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
@@ -79,6 +79,7 @@ public class xemBaiXeController implements Initializable{
     @SneakyThrows
     public void setListB(station s) {
         idStation=s.getId();
+        tenBaiXe=s.getTenBaiXe();
 
         loadData();
 
@@ -107,6 +108,7 @@ public class xemBaiXeController implements Initializable{
                 }else if (resultSet.getString("isLocked").equals("0")) {
                     trangThaiXe="Xe đang được thuê";
                 }
+
                 listBike.add(new bike(
                         resultSet.getInt("ID_Bike"),
                         resultSet.getString("BikeSerialNumber"),
@@ -116,8 +118,9 @@ public class xemBaiXeController implements Initializable{
                         trangThaiXe));
 
                 t.setItems(listBike);
+
             }
-//            System.out.println(idStation);
+
 
 
 
@@ -130,6 +133,7 @@ public class xemBaiXeController implements Initializable{
         } catch (SQLException ex) {
             Logger.getLogger(station.class.getName()).log(Level.SEVERE, null, ex);
         }
+        tenBaiXeL.setText(tenBaiXe);
 
 
 
