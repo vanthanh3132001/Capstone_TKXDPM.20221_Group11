@@ -14,4 +14,7 @@ Analysis Diagram : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Grou
 Interface Design : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/InterFaceDesign </br>
 Class Design : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/ClassDesign </br>
 # [Tuần 3]:</br> 
-Data modeling</br>
+Data modeling : https://github.com/vanthanh3132001/Capstone_TKXDPM.20221_Group11/tree/main/DataModel
+</br>
+# [Tuần 4]:</br>
+Coding
