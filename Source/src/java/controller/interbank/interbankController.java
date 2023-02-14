@@ -1,6 +1,7 @@
 package controller.interbank;
 import javax.swing.*;
 
+import controller.interbank.IInterbank;
 import controller.bike.xemBaiXeController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,7 +38,7 @@ import java.util.logging.Logger;
 import entity.bike;
 import static utility.SQLCommand.STATION_QUERY_LAY_THONG_TIN;
 import javafx.scene.control.Label;
-public class interbankController{
+public class interbankController implements IInterbank {
 
 
 
@@ -48,7 +49,7 @@ public class interbankController{
     ResultSet resultSet = null ;
 
 
-    public void addMoney(int money) throws IOException{
+    public void addMoney(int money) throws IOException {
         try {
 
 

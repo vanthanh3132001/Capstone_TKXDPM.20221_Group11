@@ -55,6 +55,34 @@ public class chooseStationController implements Initializable {
         return hoursInMins + mins;
     }
 
+
+    private int caculate_Fee(int time_renting, String biketype){
+        int money;
+        System.out.println(time_renting);
+//
+        if (time_renting<=10  && time_renting>=0){
+            System.out.println("nho hon 10");
+            money = 0;
+        }
+        else {
+
+            if (10 < time_renting && time_renting <= 30) {
+                System.out.println("10 30");
+                money = 10000;
+            } else {
+                double minute = (double) min_Renting;
+                System.out.println(">30");
+                money = (int) (10000 + 3000 * Math.ceil((minute - 30) / 15));
+            }
+        }
+        if (biketype.equals("xe đạp")){
+            return money;
+        }
+        else{
+            return  money * 3 /2;
+        }
+    }
+
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
     ResultSet resultSet = null ;
@@ -104,51 +132,53 @@ public class chooseStationController implements Initializable {
 
                         min_Renting = toMins(TimeRenting);
 
-                        if (BikeType.equals("xe đạp")){
-                            System.out.println(min_Renting);
-//
-                            if (min_Renting<=10  && min_Renting>=0){
-                                System.out.println("nho hon 10");
-                                money_Renting = 0;
-                            }
-                            else {
+                        money_Renting = caculate_Fee(min_Renting, BikeType);
 
-                                if (10 < min_Renting && min_Renting <= 30) {
-                                    System.out.println("10 30");
-                                    money_Renting = 10000;
-                                } else {
-                                    double minute = (double) min_Renting;
-                                    System.out.println(">30");
-                                    money_Renting = (int) (10000 + 3000 * Math.ceil((minute - 30) / 15));
-                                }
-                            }
-                        }
-                        if (BikeType.equals("xe đạp đôi")){
-                            if (min_Renting<=10  && min_Renting>=0){
-                                money_Renting = 0;
-                            }
-                            else {
-                                if (10 < min_Renting && min_Renting <= 30) {
-                                    money_Renting = 15000;
-                                } else {
-                                    double minute = (double) min_Renting;
-                                    money_Renting = (int) (15000 + 4000 * Math.ceil((minute - 30) / 15));
-                                }
-                            }
-                        }
-                        if (BikeType.equals("xe điện")){
-                            if (min_Renting<=10  && min_Renting>=0){
-                                money_Renting = 0;
-                            }
-                            else {
-                                if (10 < min_Renting && min_Renting <= 30) {
-                                    money_Renting = 15000;
-                                } else {
-                                    double minute = (double) min_Renting;
-                                    money_Renting = (int) (15000 + 4000 * Math.ceil((minute - 30) / 15));
-                                }
-                            }
-                        }
+//                        if (BikeType.equals("xe đạp")){
+//                            System.out.println(min_Renting);
+////
+//                            if (min_Renting<=10  && min_Renting>=0){
+//                                System.out.println("nho hon 10");
+//                                money_Renting = 0;
+//                            }
+//                            else {
+//
+//                                if (10 < min_Renting && min_Renting <= 30) {
+//                                    System.out.println("10 30");
+//                                    money_Renting = 10000;
+//                                } else {
+//                                    double minute = (double) min_Renting;
+//                                    System.out.println(">30");
+//                                    money_Renting = (int) (10000 + 3000 * Math.ceil((minute - 30) / 15));
+//                                }
+//                            }
+//                        }
+//                        if (BikeType.equals("xe đạp đôi")){
+//                            if (min_Renting<=10  && min_Renting>=0){
+//                                money_Renting = 0;
+//                            }
+//                            else {
+//                                if (10 < min_Renting && min_Renting <= 30) {
+//                                    money_Renting = 15000;
+//                                } else {
+//                                    double minute = (double) min_Renting;
+//                                    money_Renting = (int) (15000 + 4000 * Math.ceil((minute - 30) / 15));
+//                                }
+//                            }
+//                        }
+//                        if (BikeType.equals("xe điện")){
+//                            if (min_Renting<=10  && min_Renting>=0){
+//                                money_Renting = 0;
+//                            }
+//                            else {
+//                                if (10 < min_Renting && min_Renting <= 30) {
+//                                    money_Renting = 15000;
+//                                } else {
+//                                    double minute = (double) min_Renting;
+//                                    money_Renting = (int) (15000 + 4000 * Math.ceil((minute - 30) / 15));
+//                                }
+//                            }
+//                        }
 
 
 
@@ -191,49 +221,52 @@ public class chooseStationController implements Initializable {
 
                             int min_Renting = toMins(TimeRenting);
                             System.out.println(min_Renting);
-                            if (BikeType.equals("xe đạp")){
-//
-                                if (min_Renting<10){
-                                    System.out.println("Nho hon 10");
-                                    money_Renting = 0;
-                                }
-                                else {
-                                    if (10 <= min_Renting && min_Renting <= 30) {
-                                        System.out.println("Nho hon 30 lon hon 10");
-                                        money_Renting = 10000;
-                                    } else {
-                                        System.out.println(">30");
-                                        double minute = (double) min_Renting;
-                                        money_Renting = (int) (10000 + 3000 * Math.ceil((minute - 30) / 15));
-                                    }
-                                }
-                            }
-                            if (BikeType.equals("xe đạp đôi")){
-                                if (min_Renting<=10  && min_Renting>=0){
-                                    money_Renting = 0;
-                                }
-                                else {
-                                    if (10 < min_Renting && min_Renting <= 30) {
-                                        money_Renting = 15000;
-                                    } else {
-                                        double minute = (double) min_Renting;
-                                        money_Renting = (int) (15000 + 4500 * Math.ceil((minute - 30) / 15));
-                                    }
-                                }
-                            }
-                            if (BikeType.equals("xe điện")){
-                                if (min_Renting<=10  && min_Renting>=0){
-                                    money_Renting = 0;
-                                }
-                                else {
-                                    if (10 < min_Renting && min_Renting <= 30) {
-                                        money_Renting = 15000;
-                                    } else {
-                                        double minute = (double) min_Renting;
-                                        money_Renting = (int) (15000 + 4500 * Math.ceil((minute - 30) / 15));
-                                    }
-                                }
-                            }
+
+                            money_Renting = caculate_Fee(min_Renting, BikeType);
+
+//                            if (BikeType.equals("xe đạp")){
+////
+//                                if (min_Renting<10){
+//                                    System.out.println("Nho hon 10");
+//                                    money_Renting = 0;
+//                                }
+//                                else {
+//                                    if (10 <= min_Renting && min_Renting <= 30) {
+//                                        System.out.println("Nho hon 30 lon hon 10");
+//                                        money_Renting = 10000;
+//                                    } else {
+//                                        System.out.println(">30");
+//                                        double minute = (double) min_Renting;
+//                                        money_Renting = (int) (10000 + 3000 * Math.ceil((minute - 30) / 15));
+//                                    }
+//                                }
+//                            }
+//                            if (BikeType.equals("xe đạp đôi")){
+//                                if (min_Renting<=10  && min_Renting>=0){
+//                                    money_Renting = 0;
+//                                }
+//                                else {
+//                                    if (10 < min_Renting && min_Renting <= 30) {
+//                                        money_Renting = 15000;
+//                                    } else {
+//                                        double minute = (double) min_Renting;
+//                                        money_Renting = (int) (15000 + 4500 * Math.ceil((minute - 30) / 15));
+//                                    }
+//                                }
+//                            }
+//                            if (BikeType.equals("xe điện")){
+//                                if (min_Renting<=10  && min_Renting>=0){
+//                                    money_Renting = 0;
+//                                }
+//                                else {
+//                                    if (10 < min_Renting && min_Renting <= 30) {
+//                                        money_Renting = 15000;
+//                                    } else {
+//                                        double minute = (double) min_Renting;
+//                                        money_Renting = (int) (15000 + 4500 * Math.ceil((minute - 30) / 15));
+//                                    }
+//                                }
+//                            }
 
 
 
